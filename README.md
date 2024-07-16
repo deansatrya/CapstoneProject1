@@ -16,3 +16,15 @@ Hospital Patient Management System
 7. Undo delete = untuk membatalkan atau mengembalikan data yang sudah di delete
 ##
 8. Exit = selesai atau keluar dari progaram
+
+# Data Description
+Berikut deskripsi kolom:
+| No | Nama Kolom | Type | Range | Deskripsi |
+| -- | -- | -- | -- | -- |
+| 1 | `ID` | `int` | - | ID pasien |
+| 2 | `Name` | `str` | - | Nama pasien |
+| 3 | `Disease` | `str` | - | Penyakit pasien |
+| 4 | `Room` | `int` | - | Nomor ruangan pasien |
+| 5 | `Gender` | `str` | Male / Female  | Jenis kelamin pasien |
+| 6 | `Age` | `int` | - | Umur Pasien |
+| 7 | `Address` | `str` | - | Alamat Pasien |
