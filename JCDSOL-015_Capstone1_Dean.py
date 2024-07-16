@@ -1,11 +1,11 @@
 import tabulate  
   
 patient_data = [  
-    {'ID': 1, 'Name': 'John Doe', 'Disease': 'Flu', 'Room': '1', 'Gender': 'Male', 'Age': 30, 'Address': 'Jalan 1'},  
-    {'ID': 2, 'Name': 'Jane Doe', 'Disease': 'Covid', 'Room': '2', 'Gender': 'Female', 'Age': 25, 'Address': 'Jalan 2'},  
-    {'ID': 3, 'Name': 'Bob Smith', 'Disease': 'Broken Leg', 'Room': '3', 'Gender': 'Male', 'Age': 40, 'Address': 'Jalan 3'},  
-    {'ID': 4, 'Name': 'Alice Brown', 'Disease': 'Headache', 'Room': '4', 'Gender': 'Female', 'Age': 28, 'Address': 'Jalan 4'},  
-    {'ID': 5, 'Name': 'Mike Davis', 'Disease': 'Fever', 'Room': '5', 'Gender': 'Male', 'Age': 35, 'Address': 'Jalan 5'}  
+    {'ID': 1, 'Name': 'John Doe', 'Disease': 'Flu', 'Room': 1, 'Gender': 'Male', 'Age': 30, 'Address': 'Jalan 1'},  
+    {'ID': 2, 'Name': 'Jane Doe', 'Disease': 'Covid', 'Room': 2, 'Gender': 'Female', 'Age': 25, 'Address': 'Jalan 2'},  
+    {'ID': 3, 'Name': 'Bob Smith', 'Disease': 'Broken Leg', 'Room': 3, 'Gender': 'Male', 'Age': 40, 'Address': 'Jalan 3'},  
+    {'ID': 4, 'Name': 'Alice Brown', 'Disease': 'Headache', 'Room': 4, 'Gender': 'Female', 'Age': 28, 'Address': 'Jalan 4'},  
+    {'ID': 5, 'Name': 'Mike Davis', 'Disease': 'Fever', 'Room': 5, 'Gender': 'Male', 'Age': 35, 'Address': 'Jalan 5'}  
 ]  
 
 backup_data = []  
@@ -36,7 +36,7 @@ def add_patient_data():
         address = input('Enter address: ').title()   
         while not address:  
             address = input('Invalid address. Please enter a valid address: ').title()
-        patient_data.append({'ID': int(id), 'Name': name, 'Disease': disease, 'Room': room, 'Gender': gender, 'Age': age, 'Address': address})    
+        patient_data.append({'ID': int(id), 'Name': name, 'Disease': disease, 'Room': int(room), 'Gender': gender, 'Age': age, 'Address': address})    
         print('Patient data added successfully!')  
         cont = input('Do you want to add another patient? (y/n): ')  
         if cont.lower()!= 'y':  
@@ -99,13 +99,13 @@ def delete_patient_data():
   
 def filter_patient_data():  
     while True:  
-        filter_by = input('Filter by (Disease, Room, Gender, Age): ').title()
-        while filter_by not in ['Disease', 'Room', 'Gender', 'Age']:  
-            filter_by = input('Invalid filter. Please enter disease, room, gender, or age: ').title()  
+        filter_by = input('Filter by (Disease, Gender, Age): ').title()
+        while filter_by not in ['Disease', 'Gender', 'Age']:  
+            filter_by = input('Invalid filter. Please enter disease, gender, or age: ').title()  
         filter_value = input('Enter filter value: ').title()
         while not filter_value.replace(' ', '').isalpha(): 
             filter_value = input('Invalid filter value. Please enter a valid value: ').title()  
-        filtered_data = [patient for patient in patient_data if patient[filter_by.capitalize()] == filter_value]  
+        filtered_data = [patient for patient in patient_data if patient[filter_by.title()] == filter_value]  
         if filtered_data:  
             print(tabulate.tabulate(filtered_data, headers='keys', tablefmt='pretty'))
         else:  
